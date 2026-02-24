@@ -13,7 +13,6 @@
   color: #333;
 }
 
-/* Contenedor wrapper del carrusel con botones */
 .carousel-wrapper {
   position: relative;
   width: 100%;
@@ -21,14 +20,11 @@
   margin: 0 auto;
 }
 
-/* Contenedor principal del carrusel (Contenedor de desplazamiento) */
 .carousel-container {
   width: 100%;
   margin: 0 auto;
   padding: 0 40px;
   box-sizing: border-box;
-
-  /* PROPIEDADES CLAVE DE SCROLL SNAP */
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -37,7 +33,6 @@
   scroll-behavior: smooth;
 }
 
-/* Ocultar la barra de scroll en navegadores */
 .carousel-container::-webkit-scrollbar {
   display: none;
 }
@@ -46,7 +41,6 @@
   scrollbar-width: none;
 }
 
-/* Estilos para cada slide individual */
 .project-slide {
   flex: 0 0 100%;
   width: 100%;
@@ -68,7 +62,6 @@
   min-height: 550px;
 }
 
-/* Wrapper para la imagen con altura fija */
 .project-image-wrapper {
   position: relative;
   width: 100%;
@@ -165,7 +158,6 @@
   overflow-wrap: break-word;
 }
 
-/* Descripción responsive - ocultar/mostrar según pantalla */
 .project-description .description-mobile,
 .project-location .location-mobile {
   display: none;
@@ -176,7 +168,6 @@
   display: inline;
 }
 
-/* BOTONES DE NAVEGACIÓN DEL CARRUSEL */
 .carousel-nav-button {
   position: absolute;
   top: 50%;
@@ -229,7 +220,6 @@
   color: #333;
 }
 
-/* CONTENEDOR DE DOTS */
 .slick-dots-container {
   margin-top: 30px;
   display: flex;
@@ -285,118 +275,6 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-}
-
-/* MODAL PARA IMAGEN AMPLIADA */
-.image-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  padding: 20px;
-  cursor: default;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.modal-content {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  animation: zoomIn 0.3s ease;
-  user-select: none;
-  overflow: hidden;
-}
-
-.modal-content.zooming {
-  cursor: zoom-in;
-}
-
-.modal-content.zooming .modal-image {
-  cursor: zoom-in;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.modal-content img {
-  max-width: 100%;
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  display: block;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
-  user-select: none;
-}
-
-.modal-hint {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 10px 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  animation: fadeIn 0.5s ease;
-  pointer-events: none;
-  z-index: 100000;
-}
-
-.modal-close {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  font-size: 2rem;
-  color: #333;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100002;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.modal-close:hover {
-  background-color: #fff;
-  transform: rotate(90deg) scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-}
-
-.modal-close:focus {
-  outline: 3px solid #4299e1;
-  outline-offset: 2px;
 }
 
 /* RESPONSIVIDAD */
@@ -473,23 +351,6 @@
 
   .slick-dots-container {
     margin-top: 20px;
-  }
-
-  .modal-close {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    top: 70px;
-    right: 10px;
-  }
-
-  .modal-content {
-    max-width: 95vw;
-    max-height: 85vh;
-  }
-
-  .modal-content img {
-    max-height: 85vh;
   }
 }
 
@@ -593,23 +454,8 @@
   .slick-dots-container li.slick-active button {
     width: 24px;
   }
-
-  .modal-close {
-    width: 36px;
-    height: 36px;
-    font-size: 1.3rem;
-    top: 60px;
-    right: 8px;
-  }
-
-  .modal-hint {
-    font-size: 0.8rem;
-    padding: 8px 16px;
-    bottom: 20px;
-  }
 }
 
-/* Ajustes específicos para pantallas muy pequeñas como iPhone SE */
 @media (max-width: 375px) {
   .carousel-container {
     padding: 0 15px;
@@ -643,4 +489,14 @@
   .project-location {
     line-height: 1.65;
   }
+}
+
+/* Fondo semitransparente para el lightbox */
+.yarl__root {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.yarl__container {
+  background: rgba(0, 0, 0, 0.75) !important;
 }

@@ -3,27 +3,85 @@
 // src/sections/ProjectsSection.jsx
 
 import { useState, useEffect, useRef } from "react"
+import Lightbox from "yet-another-react-lightbox"
+import Zoom from "yet-another-react-lightbox/plugins/zoom"
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
+import "yet-another-react-lightbox/styles.css"
+import "yet-another-react-lightbox/plugins/thumbnails.css"
 import "./ProjectsSection.css"
 
-// Importamos las imágenes MINI (para el carrusel)
 import barbottoMini from "../assets/images/Barbotto_mini.png"
 import colomboMini from "../assets/images/Colombo_mini.png"
 import gutierrezMini from "../assets/images/Gutierrez_mini.png"
 import trafoMini from "../assets/images/Trafo_mini.png"
+import foroPaneles1Mini from "../assets/images/ForoPaneles1.png"
+import foroPaneles2Mini from "../assets/images/ForoPaneles2.png"
+import foroPaneles3Mini from "../assets/images/ForoPaneles3.png"
 
-// Importamos las imágenes FULL (para el modal ampliado)
 import barbottoFull from "../assets/images/Barbotto_Full.png"
 import colomboFull from "../assets/images/Colombo_Full.png"
 import gutierrezFull from "../assets/images/Gutierrez_Full.png"
 import trafoFull from "../assets/images/Trafo_Full.png"
 
-// Importamos la lupa
 import lupaImg from "../assets/images/Lupa.png"
+
+// Slide personalizado para YouTube
+const YoutubeSlide = ({ slide, offset }) => {
+  const isActive = offset === 0
+
+  return (
+    <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {isActive ? (
+        <iframe
+          width="90%"
+          height="80%"
+          src={`https://www.youtube.com/embed/${slide.videoId}?autoplay=1`}
+          title="YouTube video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{ borderRadius: "8px", maxWidth: "900px", maxHeight: "520px" }}
+        />
+      ) : (
+        <img
+          src={`https://img.youtube.com/vi/${slide.videoId}/mqdefault.jpg`}
+          alt="Video"
+          style={{ borderRadius: "8px", maxWidth: "900px", maxHeight: "520px", objectFit: "cover" }}
+        />
+      )}
+    </div>
+  )
+}
+
+// Thumbnail personalizado para YouTube
+const YoutubeThumbnail = ({ slide }) => (
+  <img
+    src={`https://img.youtube.com/vi/${slide.videoId}/mqdefault.jpg`}
+    alt="Video thumbnail"
+    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+  />
+)
+
+const isYoutubeSlide = (slide) => slide.type === "youtube"
 
 const projectsData = [
   {
+    imageMini: foroPaneles3Mini,
+    images: [foroPaneles3Mini, foroPaneles2Mini, foroPaneles1Mini],
+    slides: [
+      { src: foroPaneles3Mini },
+      { src: foroPaneles2Mini },
+      { src: foroPaneles1Mini },
+      { type: "youtube", videoId: "7gwd_xy8p-s" },
+    ],
+    location: "San Justo, Provincia de Buenos Aires.",
+    description: "Instalación fotovoltaica residencial de 6,35 kWp.",
+    details: "Enero de 2026.",
+    title: "Instalación Fotovoltaica",
+  },
+  {
     imageMini: barbottoMini,
-    imageFull: barbottoFull,
+    images: [barbottoFull],
     location: "Edificio Barbotto, Buenos Aires, Argentina.",
     description: "Cálculo de la estructura de hormigón armado y sus fundaciones.",
     details: "10 niveles.",
@@ -31,7 +89,7 @@ const projectsData = [
   },
   {
     imageMini: colomboMini,
-    imageFull: colomboFull,
+    images: [colomboFull],
     location: "Edificio Colombo, Buenos Aires, Argentina.",
     description: "Cálculo de la estructura de hormigón armado y sus fundaciones.",
     details: "3 niveles.",
@@ -39,7 +97,7 @@ const projectsData = [
   },
   {
     imageMini: gutierrezMini,
-    imageFull: gutierrezFull,
+    images: [gutierrezFull],
     location: "Edificio Gutierrez, Buenos Aires, Argentina.",
     description: "Cálculo de la estructura de hormigón armado y sus fundaciones.",
     details: "4 niveles.",
@@ -47,7 +105,7 @@ const projectsData = [
   },
   {
     imageMini: trafoMini,
-    imageFull: trafoFull,
+    images: [trafoFull],
     location: "Base para transformador de media tensión, Buenos Aires, Argentina.",
     locationMobile: {
       line1: "Base para transformador de media tensión,",
@@ -64,10 +122,9 @@ const projectsData = [
 ]
 
 const ProjectsSection = ({ id }) => {
-  const [modalImage, setModalImage] = useState(null)
-  const [isZooming, setIsZooming] = useState(false)
-  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 })
-  const imageRef = useRef(null)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxSlides, setLightboxSlides] = useState([])
+  const [lightboxIndex, setLightboxIndex] = useState(0)
 
   const carouselRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -114,33 +171,11 @@ const ProjectsSection = ({ id }) => {
     }
   }, [])
 
-  const openModal = (image) => {
-    setModalImage(image)
-    document.body.style.overflow = "hidden"
-  }
-
-  const closeModal = () => {
-    setModalImage(null)
-    setIsZooming(false)
-    document.body.style.overflow = "unset"
-  }
-
-  const handleMouseMove = (e) => {
-    if (!imageRef.current) return
-
-    const rect = imageRef.current.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width) * 100
-    const y = ((e.clientY - rect.top) / rect.height) * 100
-
-    setZoomPosition({ x, y })
-  }
-
-  const handleMouseEnter = () => {
-    setIsZooming(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsZooming(false)
+  const openLightbox = (project) => {
+    const slides = project.slides || project.images.map((src) => ({ src }))
+    setLightboxSlides(slides)
+    setLightboxIndex(0)
+    setLightboxOpen(true)
   }
 
   const formatDescription = (project) => {
@@ -150,13 +185,12 @@ const ProjectsSection = ({ id }) => {
         secondLine: project.descriptionMobile.line2,
       }
     }
-
     const words = project.description.split(" ")
     const midPoint = Math.ceil(words.length / 2)
-    const firstLine = words.slice(0, midPoint).join(" ")
-    const secondLine = words.slice(midPoint).join(" ")
-
-    return { firstLine, secondLine }
+    return {
+      firstLine: words.slice(0, midPoint).join(" "),
+      secondLine: words.slice(midPoint).join(" "),
+    }
   }
 
   const formatLocation = (project) => {
@@ -166,45 +200,8 @@ const ProjectsSection = ({ id }) => {
         secondLine: project.locationMobile.line2,
       }
     }
-
-    return {
-      firstLine: project.location,
-      secondLine: null,
-    }
+    return { firstLine: project.location, secondLine: null }
   }
-
-  useEffect(() => {
-    if (!modalImage) return
-
-    const handleEsc = (e) => {
-      if (e.key === "Escape") {
-        closeModal()
-      }
-    }
-
-    const handleHeaderClick = (e) => {
-      const header = document.querySelector(".header")
-      const mainNav = document.querySelector(".main-nav")
-      const navItems = document.querySelectorAll(".nav-item a")
-
-      if (
-        (header && header.contains(e.target)) ||
-        (mainNav && mainNav.contains(e.target)) ||
-        Array.from(navItems).some((link) => link.contains(e.target))
-      ) {
-        closeModal()
-      }
-    }
-
-    window.addEventListener("keydown", handleEsc)
-    document.addEventListener("click", handleHeaderClick, true)
-
-    return () => {
-      window.removeEventListener("keydown", handleEsc)
-      document.removeEventListener("click", handleHeaderClick, true)
-      document.body.style.overflow = "unset"
-    }
-  }, [modalImage])
 
   return (
     <section id={id} className="projects-section">
@@ -233,13 +230,11 @@ const ProjectsSection = ({ id }) => {
                   <div className="project-card-carousel">
                     <div
                       className="project-image-wrapper"
-                      onClick={() => openModal(project.imageFull)}
+                      onClick={() => openLightbox(project)}
                       role="button"
                       tabIndex={0}
                       onKeyPress={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          openModal(project.imageFull)
-                        }
+                        if (e.key === "Enter" || e.key === " ") openLightbox(project)
                       }}
                       aria-label={`Ampliar imagen del proyecto ${project.title}`}
                     >
@@ -250,7 +245,13 @@ const ProjectsSection = ({ id }) => {
                       />
                       <div className="image-overlay">
                         <img src={lupaImg || "/placeholder.svg"} alt="Ampliar" className="zoom-icon" />
-                        <span className="zoom-text">Click para ampliar</span>
+                        <span className="zoom-text">
+                          {project.slides
+                            ? `Ver ${project.slides.length - 1} fotos + video`
+                            : project.images.length > 1
+                            ? `Ver ${project.images.length} fotos`
+                            : "Click para ampliar"}
+                        </span>
                       </div>
                     </div>
                     <div className="project-info">
@@ -307,50 +308,33 @@ const ProjectsSection = ({ id }) => {
           </ul>
         </div>
 
-        {modalImage && (
-          <div
-            className="image-modal"
-            onClick={closeModal}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Imagen ampliada"
-          >
-            <button
-              className="modal-close"
-              onClick={(e) => {
-                e.stopPropagation()
-                closeModal()
-              }}
-              aria-label="Cerrar modal"
-            >
-              ✕
-            </button>
-            <div
-              className={`modal-content ${isZooming ? "zooming" : ""}`}
-              onClick={(e) => e.stopPropagation()}
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <img
-                ref={imageRef}
-                src={modalImage || "/placeholder.svg"}
-                alt="Proyecto ampliado"
-                className="modal-image"
-                style={{
-                  transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
-                  transform: isZooming ? "scale(2)" : "scale(1)",
-                  transition: isZooming ? "none" : "transform 0.3s ease",
-                }}
-              />
-            </div>
-            <p className="modal-hint">
-              {isZooming
-                ? "Mueve el cursor para explorar la imagen"
-                : "Pasa el cursor sobre la imagen para hacer zoom | Presiona ESC para cerrar"}
-            </p>
-          </div>
-        )}
+        <Lightbox
+          open={lightboxOpen}
+          close={() => setLightboxOpen(false)}
+          slides={lightboxSlides}
+          index={lightboxIndex}
+          plugins={[Zoom, Thumbnails]}
+          closeOnBackdropClick
+          zoom={{
+            maxZoomPixelRatio: 4,
+            zoomInMultiplier: 2,
+            doubleTapDelay: 300,
+            doubleClickDelay: 300,
+            scrollToZoom: true,
+          }}
+          thumbnails={{
+            position: "bottom",
+            width: 80,
+            height: 60,
+            gap: 8,
+          }}
+          render={{
+            slide: (props) =>
+              isYoutubeSlide(props.slide) ? <YoutubeSlide slide={props.slide} offset={props.offset} /> : undefined,
+            thumbnail: (props) =>
+              isYoutubeSlide(props.slide) ? <YoutubeThumbnail slide={props.slide} /> : undefined,
+          }}
+        />
       </div>
     </section>
   )
