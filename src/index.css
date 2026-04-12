@@ -450,7 +450,6 @@ p {
 
 .hero-section {
   background: linear-gradient(135deg, var(--color-primary-100), var(--color-neutral-50));
-  border: 2px solid var(--color-primary-300);
   box-shadow: var(--shadow-lg);
   margin-bottom: var(--space-xl);
   padding: var(--space-3xl) var(--space-lg);
