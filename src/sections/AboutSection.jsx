@@ -1,9 +1,11 @@
 // src/sections/AboutSection.jsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './AboutSection.css';
-import heroImage from '../assets/images/imginicio.png';
+import heroImage from '../assets/images/imginicio.webp';
 
 const AboutSection = ({ id }) => {
+  const { t } = useTranslation();
   return (
     <section id={id} className="about-section">
       <div className="hero-section">
@@ -15,8 +17,8 @@ const AboutSection = ({ id }) => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              VR3D<br />
-              <span className="hero-subtitle">INGENIERÍA</span>
+              {t('about.title')}<br />
+              <span className="hero-subtitle">{t('about.subtitle')}</span>
             </h1>
           </div>
         </div>
@@ -25,11 +27,11 @@ const AboutSection = ({ id }) => {
       {/* Sección de información debajo de la imagen */}
       <div className="about-info">
         <div className="container">
-          <h2>Quienes Somos</h2>
+          <h2>{t('about.heading')}</h2>
           <p className="about-text">
-            VR3D es un estudio de ingeniería de Argentina, abocado a la elaboración de proyectos edilicios de arquitectura y obras civiles en general.
+            {t('about.p1')}
             <br className="small-gap" />
-            Nuestro objetivo es contribuir a la construcción de un futuro sostenible, mediante el uso racional y eficiente de la energía, a través de la construcción sustentable y desarrollando proyectos de generación distribuida de energía eléctrica.
+            {t('about.p2')}
           </p>
         </div>
       </div>

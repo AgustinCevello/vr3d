@@ -3,6 +3,7 @@
 // src/sections/ProjectsSection.jsx
 
 import { useState, useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import Lightbox from "yet-another-react-lightbox"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
@@ -10,20 +11,20 @@ import "yet-another-react-lightbox/styles.css"
 import "yet-another-react-lightbox/plugins/thumbnails.css"
 import "./ProjectsSection.css"
 
-import barbottoMini from "../assets/images/Barbotto_mini.png"
-import colomboMini from "../assets/images/Colombo_mini.png"
-import gutierrezMini from "../assets/images/Gutierrez_mini.png"
-import trafoMini from "../assets/images/Trafo_mini.png"
-import foroPaneles1Mini from "../assets/images/ForoPaneles1.png"
-import foroPaneles2Mini from "../assets/images/ForoPaneles2.png"
-import foroPaneles3Mini from "../assets/images/ForoPaneles3.png"
+import barbottoMini from "../assets/images/Barbotto_mini.webp"
+import colomboMini from "../assets/images/Colombo_mini.webp"
+import gutierrezMini from "../assets/images/Gutierrez_mini.webp"
+import trafoMini from "../assets/images/Trafo_mini.webp"
+import foroPaneles1Mini from "../assets/images/ForoPaneles1.webp"
+import foroPaneles2Mini from "../assets/images/ForoPaneles2.webp"
+import foroPaneles3Mini from "../assets/images/ForoPaneles3.webp"
 
-import barbottoFull from "../assets/images/Barbotto_Full.png"
-import colomboFull from "../assets/images/Colombo_Full.png"
-import gutierrezFull from "../assets/images/Gutierrez_Full.png"
-import trafoFull from "../assets/images/Trafo_Full.png"
+import barbottoFull from "../assets/images/Barbotto_Full.webp"
+import colomboFull from "../assets/images/Colombo_Full.webp"
+import gutierrezFull from "../assets/images/Gutierrez_Full.webp"
+import trafoFull from "../assets/images/Trafo_Full.webp"
 
-import lupaImg from "../assets/images/Lupa.png"
+import lupaImg from "../assets/images/Lupa.webp"
 
 // Slide personalizado para YouTube
 const YoutubeSlide = ({ slide, offset }) => {
@@ -64,64 +65,66 @@ const YoutubeThumbnail = ({ slide }) => (
 
 const isYoutubeSlide = (slide) => slide.type === "youtube"
 
-const projectsData = [
-  {
-    imageMini: foroPaneles3Mini,
-    images: [foroPaneles3Mini, foroPaneles2Mini, foroPaneles1Mini],
-    slides: [
-      { src: foroPaneles3Mini },
-      { src: foroPaneles2Mini },
-      { src: foroPaneles1Mini },
-      { type: "youtube", videoId: "7gwd_xy8p-s" },
-    ],
-    location: "San Justo, Provincia de Buenos Aires.",
-    description: "Instalación fotovoltaica residencial de 6,35 kWp.",
-    details: "Enero de 2026.",
-    title: "Instalación Fotovoltaica",
-  },
-  {
-    imageMini: barbottoMini,
-    images: [barbottoFull],
-    location: "Edificio Barbotto, Buenos Aires, Argentina.",
-    description: "Cálculo de la estructura de hormigón armado y sus fundaciones.",
-    details: "10 niveles.",
-    title: "Edificio Barbotto",
-  },
-  {
-    imageMini: colomboMini,
-    images: [colomboFull],
-    location: "Edificio Colombo, Buenos Aires, Argentina.",
-    description: "Cálculo de la estructura de hormigón armado y sus fundaciones.",
-    details: "3 niveles.",
-    title: "Edificio Colombo",
-  },
-  {
-    imageMini: gutierrezMini,
-    images: [gutierrezFull],
-    location: "Edificio Gutierrez, Buenos Aires, Argentina.",
-    description: "Cálculo de la estructura de hormigón armado y sus fundaciones.",
-    details: "4 niveles.",
-    title: "Edificio Gutierrez",
-  },
-  {
-    imageMini: trafoMini,
-    images: [trafoFull],
-    location: "Base para transformador de media tensión, Buenos Aires, Argentina.",
-    locationMobile: {
-      line1: "Base para transformador de media tensión,",
-      line2: "Buenos Aires, Argentina.",
-    },
-    description: "Cálculo estructural, planos de encofrados y armaduras.",
-    descriptionMobile: {
-      line1: "Cálculo estructural, planos",
-      line2: "de encofrados y armaduras.",
-    },
-    details: "",
-    title: "Base Transformador",
-  },
-]
-
 const ProjectsSection = ({ id }) => {
+  const { t } = useTranslation()
+
+  const projectsData = [
+    {
+      imageMini: foroPaneles3Mini,
+      images: [foroPaneles3Mini, foroPaneles2Mini, foroPaneles1Mini],
+      slides: [
+        { src: foroPaneles3Mini },
+        { src: foroPaneles2Mini },
+        { src: foroPaneles1Mini },
+        { type: "youtube", videoId: "7gwd_xy8p-s" },
+      ],
+      location: t('projects.items.fotovoltaica.location'),
+      description: t('projects.items.fotovoltaica.description'),
+      details: t('projects.items.fotovoltaica.details'),
+      title: t('projects.items.fotovoltaica.title'),
+    },
+    {
+      imageMini: barbottoMini,
+      images: [barbottoFull],
+      location: t('projects.items.barbotto.location'),
+      description: t('projects.items.barbotto.description'),
+      details: t('projects.items.barbotto.details'),
+      title: t('projects.items.barbotto.title'),
+    },
+    {
+      imageMini: colomboMini,
+      images: [colomboFull],
+      location: t('projects.items.colombo.location'),
+      description: t('projects.items.colombo.description'),
+      details: t('projects.items.colombo.details'),
+      title: t('projects.items.colombo.title'),
+    },
+    {
+      imageMini: gutierrezMini,
+      images: [gutierrezFull],
+      location: t('projects.items.gutierrez.location'),
+      description: t('projects.items.gutierrez.description'),
+      details: t('projects.items.gutierrez.details'),
+      title: t('projects.items.gutierrez.title'),
+    },
+    {
+      imageMini: trafoMini,
+      images: [trafoFull],
+      location: t('projects.items.trafo.location'),
+      locationMobile: {
+        line1: t('projects.items.trafo.locationMobile1'),
+        line2: t('projects.items.trafo.locationMobile2'),
+      },
+      description: t('projects.items.trafo.description'),
+      descriptionMobile: {
+        line1: t('projects.items.trafo.descriptionMobile1'),
+        line2: t('projects.items.trafo.descriptionMobile2'),
+      },
+      details: "",
+      title: t('projects.items.trafo.title'),
+    },
+  ]
+
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxSlides, setLightboxSlides] = useState([])
   const [lightboxIndex, setLightboxIndex] = useState(0)
@@ -206,14 +209,14 @@ const ProjectsSection = ({ id }) => {
   return (
     <section id={id} className="projects-section">
       <div className="section-content">
-        <h2>Proyectos Realizados</h2>
+        <h2>{t('projects.heading')}</h2>
 
         <div className="carousel-wrapper">
           <button
             className="carousel-nav-button prev"
             onClick={goToPrevious}
             disabled={activeIndex === 0}
-            aria-label="Proyecto anterior"
+            aria-label={t('projects.nav.prev')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -236,21 +239,21 @@ const ProjectsSection = ({ id }) => {
                       onKeyPress={(e) => {
                         if (e.key === "Enter" || e.key === " ") openLightbox(project)
                       }}
-                      aria-label={`Ampliar imagen del proyecto ${project.title}`}
+                      aria-label={t('projects.lightbox.expandImage', { title: project.title })}
                     >
                       <img
                         src={project.imageMini || "/placeholder.svg"}
-                        alt={`Proyecto ${project.location}`}
+                        alt={project.title}
                         className="project-image"
                       />
                       <div className="image-overlay">
                         <img src={lupaImg || "/placeholder.svg"} alt="Ampliar" className="zoom-icon" />
                         <span className="zoom-text">
                           {project.slides
-                            ? `Ver ${project.slides.length - 1} fotos + video`
+                            ? t('projects.lightbox.viewPhotosVideo', { count: project.slides.length - 1 })
                             : project.images.length > 1
-                            ? `Ver ${project.images.length} fotos`
-                            : "Click para ampliar"}
+                            ? t('projects.lightbox.viewPhotos', { count: project.images.length })
+                            : t('projects.lightbox.clickToZoom')}
                         </span>
                       </div>
                     </div>
@@ -288,7 +291,7 @@ const ProjectsSection = ({ id }) => {
             className="carousel-nav-button next"
             onClick={goToNext}
             disabled={activeIndex === projectsData.length - 1}
-            aria-label="Proyecto siguiente"
+            aria-label={t('projects.nav.next')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -300,8 +303,8 @@ const ProjectsSection = ({ id }) => {
           <ul>
             {projectsData.map((_, index) => (
               <li key={index} className={index === activeIndex ? "slick-active" : ""}>
-                <button type="button" onClick={() => scrollToSlide(index)} aria-label={`Ir al proyecto ${index + 1}`}>
-                  <span className="sr-only">Proyecto {index + 1}</span>
+                <button type="button" onClick={() => scrollToSlide(index)} aria-label={t('projects.nav.goTo', { index: index + 1 })}>
+                  <span className="sr-only">{t('projects.nav.goTo', { index: index + 1 })}</span>
                 </button>
               </li>
             ))}

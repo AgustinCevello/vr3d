@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "inicio": "Inicio",
+    "quienesSomos": "Quienes Somos",
+    "servicios": "Servicios",
+    "proyectos": "Proyectos",
+    "contacto": "Contacto",
+    "abrirMenu": "Abrir menú",
+    "cerrarMenu": "Cerrar menú"
+  },
+  "about": {
+    "title": "VR3D",
+    "subtitle": "INGENIERÍA",
+    "heading": "Quienes Somos",
+    "p1": "VR3D es un estudio de ingeniería de Argentina, abocado a la elaboración de proyectos edilicios de arquitectura y obras civiles en general.",
+    "p2": "Nuestro objetivo es contribuir a la construcción de un futuro sostenible, mediante el uso racional y eficiente de la energía, a través de la construcción sustentable y desarrollando proyectos de generación distribuida de energía eléctrica."
+  },
+  "services": {
+    "heading": "Nuestros Servicios",
+    "items": {
+      "proyectos": "Proyectos",
+      "planos": "Planos",
+      "calculos": "Cálculos estructurales",
+      "direccion": "Dirección de obras",
+      "ingenieria": "Elaboración de ingeniería básica e ingeniería de detalle",
+      "solar": "Proyecto y ejecución de instalaciones solares fotovoltaicas"
+    }
+  },
+  "projects": {
+    "heading": "Proyectos Realizados",
+    "nav": {
+      "prev": "Proyecto anterior",
+      "next": "Proyecto siguiente",
+      "goTo": "Ir al proyecto {{index}}"
+    },
+    "lightbox": {
+      "viewPhotosVideo": "Ver {{count}} fotos + video",
+      "viewPhotos": "Ver {{count}} fotos",
+      "clickToZoom": "Click para ampliar",
+      "expandImage": "Ampliar imagen del proyecto {{title}}"
+    },
+    "items": {
+      "fotovoltaica": {
+        "title": "Instalación Fotovoltaica",
+        "location": "San Justo, Provincia de Buenos Aires.",
+        "description": "Instalación fotovoltaica residencial de 6,35 kWp.",
+        "details": "Enero de 2026."
+      },
+      "barbotto": {
+        "title": "Edificio Barbotto",
+        "location": "Edificio Barbotto, Buenos Aires, Argentina.",
+        "description": "Cálculo de la estructura de hormigón armado y sus fundaciones.",
+        "details": "10 niveles."
+      },
+      "colombo": {
+        "title": "Edificio Colombo",
+        "location": "Edificio Colombo, Buenos Aires, Argentina.",
+        "description": "Cálculo de la estructura de hormigón armado y sus fundaciones.",
+        "details": "3 niveles."
+      },
+      "gutierrez": {
+        "title": "Edificio Gutierrez",
+        "location": "Edificio Gutierrez, Buenos Aires, Argentina.",
+        "description": "Cálculo de la estructura de hormigón armado y sus fundaciones.",
+        "details": "4 niveles."
+      },
+      "trafo": {
+        "title": "Base Transformador",
+        "location": "Base para transformador de media tensión, Buenos Aires, Argentina.",
+        "locationMobile1": "Base para transformador de media tensión,",
+        "locationMobile2": "Buenos Aires, Argentina.",
+        "description": "Cálculo estructural, planos de encofrados y armaduras.",
+        "descriptionMobile1": "Cálculo estructural, planos",
+        "descriptionMobile2": "de encofrados y armaduras."
+      }
+    }
+  },
+  "contact": {
+    "heading": "Contacto",
+    "trustedBy": "Confían en nosotros",
+    "errors": {
+      "formErrorName": "Por favor ingresa tu nombre",
+      "formNameCharLimit": "El nombre no puede superar los 50 caracteres.",
+      "formNameInvalidChars": "El nombre solo puede contener letras y espacios.",
+      "formErrorEmail": "Por favor ingresa un email válido",
+      "formErrorPhone": "El número no puede superar los 17 caracteres.",
+      "formPhoneInvalidChars": "El celular solo puede contener números y el signo '+'.",
+      "formErrorReason": "El motivo no puede superar los 500 caracteres.",
+      "formSubmissionSuccess": "¡Formulario enviado con éxito!",
+      "formSubmissionError": "Por favor corrige los errores en el formulario."
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} VR3D. Todos los derechos reservados."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "quienesSomos": "About Us",
+    "servicios": "Services",
+    "proyectos": "Projects",
+    "contacto": "Contact",
+    "abrirMenu": "Open menu",
+    "cerrarMenu": "Close menu"
+  },
+  "about": {
+    "title": "VR3D",
+    "subtitle": "ENGINEERING",
+    "heading": "About Us",
+    "p1": "VR3D is an engineering studio from Argentina, dedicated to the development of architectural building projects and general civil works.",
+    "p2": "Our goal is to contribute to building a sustainable future through the rational and efficient use of energy, sustainable construction, and the development of distributed electrical energy generation projects."
+  },
+  "services": {
+    "heading": "Our Services",
+    "items": {
+      "proyectos": "Projects",
+      "planos": "Blueprints",
+      "calculos": "Structural Calculations",
+      "direccion": "Construction Management",
+      "ingenieria": "Development of Basic and Detailed Engineering",
+      "solar": "Design and Execution of Solar Photovoltaic Installations"
+    }
+  },
+  "projects": {
+    "heading": "Our Projects",
+    "nav": {
+      "prev": "Previous project",
+      "next": "Next project",
+      "goTo": "Go to project {{index}}"
+    },
+    "lightbox": {
+      "viewPhotosVideo": "View {{count}} photos + video",
+      "viewPhotos": "View {{count}} photos",
+      "clickToZoom": "Click to zoom",
+      "expandImage": "Expand image of project {{title}}"
+    },
+    "items": {
+      "fotovoltaica": {
+        "title": "Photovoltaic Installation",
+        "location": "San Justo, Buenos Aires Province.",
+        "description": "Residential photovoltaic installation of 6.35 kWp.",
+        "details": "January 2026."
+      },
+      "barbotto": {
+        "title": "Barbotto Building",
+        "location": "Barbotto Building, Buenos Aires, Argentina.",
+        "description": "Calculation of the reinforced concrete structure and its foundations.",
+        "details": "10 levels."
+      },
+      "colombo": {
+        "title": "Colombo Building",
+        "location": "Colombo Building, Buenos Aires, Argentina.",
+        "description": "Calculation of the reinforced concrete structure and its foundations.",
+        "details": "3 levels."
+      },
+      "gutierrez": {
+        "title": "Gutierrez Building",
+        "location": "Gutierrez Building, Buenos Aires, Argentina.",
+        "description": "Calculation of the reinforced concrete structure and its foundations.",
+        "details": "4 levels."
+      },
+      "trafo": {
+        "title": "Transformer Base",
+        "location": "Medium voltage transformer base, Buenos Aires, Argentina.",
+        "locationMobile1": "Medium voltage transformer base,",
+        "locationMobile2": "Buenos Aires, Argentina.",
+        "description": "Structural calculation, formwork and reinforcement plans.",
+        "descriptionMobile1": "Structural calculation, formwork",
+        "descriptionMobile2": "and reinforcement plans."
+      }
+    }
+  },
+  "contact": {
+    "heading": "Contact Us",
+    "trustedBy": "Trusted By",
+    "errors": {
+      "formErrorName": "Please enter your name",
+      "formNameCharLimit": "Name cannot exceed 50 characters.",
+      "formNameInvalidChars": "Name can only contain letters and spaces.",
+      "formErrorEmail": "Please enter a valid email",
+      "formErrorPhone": "Phone number cannot exceed 17 characters.",
+      "formPhoneInvalidChars": "Phone number can only contain numbers and the '+' sign.",
+      "formErrorReason": "Reason cannot exceed 500 characters.",
+      "formSubmissionSuccess": "Form successfully submitted!",
+      "formSubmissionError": "Please correct the errors in the form."
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} VR3D. All rights reserved."
+  }
+}
