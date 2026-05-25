@@ -2,15 +2,15 @@
 
 .language-switcher-btn {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
   background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--color-text-inverse, #ffffff);
-  padding: 6px 14px;
-  border-radius: 12px; /* Reducido para que se vea mejor en formato vertical */
+  padding: 6px 12px;
+  border-radius: 20px; /* Redondeado para formato horizontal */
   backdrop-filter: blur(10px); /* Efecto Glassmorphism */
   cursor: pointer;
   transition: all var(--transition-fast, 0.2s ease);
@@ -34,14 +34,14 @@
   outline-offset: 2px;
 }
 
-.lang-flag {
-  width: 24px;
-  height: auto;
-  border-radius: 2px;
-  object-fit: contain;
+.translate-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .lang-text {
   line-height: 1;
   letter-spacing: 0.5px;
 }
+
