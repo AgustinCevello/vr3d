@@ -617,7 +617,6 @@ textarea.form-input {
   min-height: 120px;
   resize: none;
   font-family: inherit;
-  max-length: 500;
 }
 
 .char-counter {
