@@ -24,8 +24,12 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1rem;
-  color: var(--primary-dark-blue); /* Color principal del título */
-  text-shadow: var(--shadow-sm); /* Sombra sutil para el texto */
+  color: var(--color-text-light); /* Color principal del título */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra sutil para el texto */
+}
+
+.hero-section h1 span {
+  color: var(--color-accent);
 }
 
 .hero-section p {

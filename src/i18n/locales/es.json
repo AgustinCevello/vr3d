@@ -76,7 +76,16 @@
     }
   },
   "contact": {
+    "eyebrow": "Contacto",
     "heading": "Contacto",
+    "description": "¿Tenés alguna consulta? Escribinos y te respondemos a la brevedad.",
+    "cta": "Escribinos a:",
+    "workWithUs": {
+      "eyebrow": "Sumate al equipo",
+      "heading": "Trabajá con nosotros",
+      "description": "Somos un equipo en crecimiento. Si querés formar parte, nos encantaría conocerte.",
+      "cta": "Envianos tu CV a:"
+    },
     "trustedBy": "Confían en nosotros",
     "errors": {
       "formErrorName": "Por favor ingresa tu nombre",

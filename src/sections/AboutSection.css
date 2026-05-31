@@ -7,7 +7,8 @@
   padding: 0;
   position: relative; /* Asegura contexto de apilamiento */
   z-index: 10; /* Valor alto para que esté encima */
-  margin-top: 80px; /* Ajusta según la altura de tu header/navbar */
+  margin-top: 0; /* Sin margen para eliminar espacio blanco */
+  padding-top: 0; /* El hero ocupa hasta el borde del header */
 }
 
 /* Hero Section Styles */
@@ -70,7 +71,7 @@
   letter-spacing: 0.02em;
   margin: 0;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-  color: var(--color-text-inverse);
+  color: var(--color-text-light);
 }
 
 .hero-subtitle {
@@ -79,7 +80,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   margin-top: var(--space-xs);
-  color: var(--color-accent-400);
+  color: var(--color-accent);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
@@ -107,10 +108,10 @@
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 50px;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-500));
-  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
 .about-text {
@@ -142,7 +143,7 @@
 /* Responsividad */
 @media (max-width: 992px) {
   .about-section {
-    margin-top: 70px; /* Ajustado para tablets */
+    margin-top: 0;
   }
   
   .hero-section {
@@ -161,7 +162,7 @@
 
 @media (max-width: 768px) {
   .about-section {
-    margin-top: 60px; /* Ajustado para móviles */
+    margin-top: 0;
   }
   
   .hero-section {
@@ -197,7 +198,7 @@
 
 @media (max-width: 480px) {
   .about-section {
-    margin-top: 50px; /* Ajustado para pantallas pequeñas */
+    margin-top: 0;
   }
   
   .hero-section {

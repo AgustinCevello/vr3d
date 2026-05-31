@@ -41,7 +41,11 @@
 }
 
 .lang-text {
-  line-height: 1;
+  line-height: 16px;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(1px); /* Ajuste óptico para centrar en el óvalo */
 }
 

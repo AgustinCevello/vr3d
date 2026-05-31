@@ -5,6 +5,15 @@
 
 /* ----------- CUSTOM PROPERTIES (CSS VARIABLES) ----------- */
 :root {
+  /* Nuevas variables globales */
+  --color-bg-dark: #1a2332;
+  --color-bg-light: #f8f9fa;
+  --color-accent: #00c9a7;
+  --color-accent-hover: #00a98f;
+  --color-text-dark: #2d3748;
+  --color-text-light: #ffffff;
+  --color-border: rgba(0, 201, 167, 0.3);
+
   /* Color System - Semantic naming */
   --color-primary-900: #1a202c; /* Darkest blue */
   --color-primary-700: #2c5282; /* Medium blue */
@@ -302,7 +311,7 @@ p {
 }
 
 .logo {
-  height: 50px;
+  height: 38px;
   width: auto;
   transition: transform var(--transition-normal);
 }
@@ -475,16 +484,16 @@ p {
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 50px;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-500));
-  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
 /* ----------- SERVICES SECTION ----------- */
 .services-section {
-  background-color: var(--color-surface-secondary);
-  border: 1px solid var(--color-neutral-300);
+  background-color: var(--color-bg-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .services-list {
@@ -502,6 +511,7 @@ p {
   padding: var(--space-lg);
   background-color: var(--color-surface);
   border: 2px solid var(--color-neutral-400);
+  border-left: 3px solid transparent;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   font-size: var(--font-size-lg);
@@ -512,9 +522,12 @@ p {
 }
 
 .services-list li:hover {
-  transform: translateX(8px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary-700);
+  border-left: 3px solid var(--color-accent);
+  border-top-color: var(--color-neutral-400);
+  border-right-color: var(--color-neutral-400);
+  border-bottom-color: var(--color-neutral-400);
   color: var(--color-primary-900);
   background-color: var(--color-primary-100);
 }
@@ -555,7 +568,7 @@ p {
 }
 
 .contact-section .section-title::after {
-  background: linear-gradient(90deg, var(--color-accent-500), var(--color-accent-400));
+  background: var(--color-accent);
 }
 
 .contact-form {
@@ -845,7 +858,7 @@ textarea.form-input:required:not(:placeholder-shown):valid {
   }
 
   .logo {
-    height: 50px;
+    height: 34px;
   }
 
   .logo-container {
@@ -965,7 +978,7 @@ textarea.form-input:required:not(:placeholder-shown):valid {
 
 @media (max-width: 480px) {
   .logo {
-    height: 40px;
+    height: 30px;
   }
 
   .logo-container {

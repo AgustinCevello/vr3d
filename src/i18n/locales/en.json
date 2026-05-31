@@ -76,7 +76,16 @@
     }
   },
   "contact": {
+    "eyebrow": "Contact",
     "heading": "Contact Us",
+    "description": "Do you have any questions? Write to us and we will get back to you as soon as possible.",
+    "cta": "Write to us at:",
+    "workWithUs": {
+      "eyebrow": "Join the team",
+      "heading": "Work with us",
+      "description": "We are a growing team. If you want to be part of it, we would love to meet you.",
+      "cta": "Send us your CV to:"
+    },
     "trustedBy": "Trusted By",
     "errors": {
       "formErrorName": "Please enter your name",

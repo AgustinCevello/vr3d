@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-// Importa los assets (imágenes)
-import logoImage from './assets/images/LogoVR3D.webp';
-// ELIMINADO: Ya no se importa phoneIcon, ya que nume
+import logoImage from './assets/images/vr3dlogocircular2.webp';
 
 // Importa los hooks
 import useScrollToSection from './hooks/useScrollToSection.js';
@@ -12,8 +10,9 @@ import useScrollToSection from './hooks/useScrollToSection.js';
 import HeroSection from './sections/HeroSection.jsx';
 import AboutSection from './sections/AboutSection.jsx';
 import ServicesSection from './sections/ServicesSection.jsx';
-import ContactSection from './sections/ContactSection.jsx'; // Solo las secciones que se quedan
+import ContactSection from './sections/ContactSection.jsx';
 import ProjectsSection from './sections/ProjectsSection.jsx';
+import AppFooter from './sections/AppFooter.jsx';
 
 // Importa i18n y LanguageSwitcher
 import { useTranslation } from 'react-i18next';
@@ -43,7 +42,6 @@ const AppHeader = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // Función para ir al inicio de la página
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setMenuOpen(false);
@@ -74,7 +72,6 @@ const AppHeader = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [menuOpen]);
 
-  // Ajustar scroll-padding-top basado en la altura del header
   useEffect(() => {
     const updateScrollPadding = () => {
       if (headerRef.current) {
@@ -90,7 +87,9 @@ const AppHeader = () => {
     <header className="header" ref={headerRef}>
       <div className="header-content">
         <div className="logo-container">
-          <img src={logoImage} alt="VR3D Landing Logo" className="logo" />
+          <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} aria-label={t('nav.inicio')}>
+            <img src={logoImage} alt="VR3D Landing Logo" className="logo" />
+          </a>
         </div>
 
         <nav className={`main-nav ${menuOpen ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
@@ -104,7 +103,6 @@ const AppHeader = () => {
             <li className="nav-item">
               <a href="#services" onClick={() => { scrollToSection('services'); setMenuOpen(false); }}>{t('nav.servicios')}</a>
             </li>
-
             <li className="nav-item">
               <a href="#contact" onClick={() => { scrollToSection('contact'); setMenuOpen(false); }}>{t('nav.contacto')}</a>
             </li>
@@ -124,20 +122,7 @@ const AppHeader = () => {
   );
 };
 
-
-// --- Componente AppFooter (Agrupado Footer) ---
-// --- Componente AppFooter (Agrupado Footer) ---
-const AppFooter = () => {
-  const { t } = useTranslation();
-  return (
-    <footer id="site-footer" className="footer">
-      {/* Se eliminó el bloque completo de contacto de correo */}
-      <p className="copy-right">{t('footer.copyright', { year: new Date().getFullYear() })}</p>
-    </footer>
-  );
-};
-
-// --- Componente Principal App (Define AppContent y lo envuelve en Router) ---
+// --- Componente Principal App ---
 const AppContent = () => {
   return (
     <Router>
@@ -147,17 +132,15 @@ const AppContent = () => {
           <HeroSection id="hero" />
           <AboutSection id="about" />
           <ServicesSection id="services" />
-          <ProjectsSection id="projects" /> 
+          <ProjectsSection id="projects" />
           <ContactSection id="contact" />
         </main>
         <AppFooter />
-        {/* AppFloatingButtons eliminado */}
       </div>
     </Router>
   );
 };
 
-// --- Componente Principal App (Exportado) ---
 function App() {
   return <AppContent />;
 }

@@ -1,35 +1,425 @@
-/* src/sections/ContactSection.css */
-/* ACTUALIZADO para usar las nuevas variables de index.css */
+/* ============================================================
+   CONTACT SECTION — VR3D INGENIERÍA
+   Design system: Industrial-Refined / Blueprint Precision
+   ============================================================ */
 
+/* ---------- Section shell ---------- */
 .contact-section {
-  background-color: var(--color-primary-900); /* Cambiar de var(--primary-dark-blue) */
-  color: var(--color-text-inverse); /* Cambiar de var(--text-white) */
-  padding: var(--space-4xl) var(--space-xl); /* Usar nuevo sistema de spacing */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-section h2 {
-  color: var(--color-text-inverse); /* Cambiar de var(--text-white) */
-  margin-bottom: var(--space-2xl); /* Usar nuevo sistema */
+/* Subtle blueprint grid overlay */
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 201, 167, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 201, 167, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Large decorative corner mark — top right */
+.contact-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 220px;
+  border-bottom: 1px solid rgba(0, 201, 167, 0.12);
+  border-left: 1px solid rgba(0, 201, 167, 0.12);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   DUAL COLUMN CONTACT BLOCK
+   ============================================================ */
+
+.contact-columns-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  align-items: stretch;
+  min-height: 520px;
+}
+
+/* ---------- Individual columns ---------- */
+.contact-col {
+  padding: 7rem 5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
   position: relative;
 }
 
-.contact-section h2::after {
+/* Column divider — a precise technical line */
+.contact-col:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Accent top border on each column */
+.contact-col::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5rem;
+  right: 5rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent) 0%,
+    rgba(0, 201, 167, 0.2) 60%,
+    transparent 100%
+  );
+}
+
+/* ---------- Label / eyebrow ---------- */
+.contact-col-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  opacity: 0.85;
+  margin-bottom: 2rem;
+  font-family: var(--font-heading, monospace);
+}
+
+.contact-col-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.7;
+}
+
+/* ---------- Headings ---------- */
+.contact-col h2 {
+  color: var(--color-text-inverse);
+  font-size: clamp(1.9rem, 3vw, 2.6rem) !important;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.6rem 0;
+  position: relative;
+  white-space: normal;
+  min-height: unset;
+  display: block;
+}
+
+/* Teal underline — centered */
+.contact-col h2::after {
   content: '';
   position: absolute;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 36px;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-accent-500), var(--color-accent-400)); /* Usar nuevo sistema */
-  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  border-radius: 1px;
 }
+
+/* ---------- Body text ---------- */
+.contact-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.75;
+  margin: 2rem 0 0 0;
+  max-width: 340px;
+}
+
+/* ---------- CTA block ---------- */
+.contact-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 3.5rem;
+  width: 100%;
+}
+
+.contact-cta > span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: var(--font-heading, monospace);
+}
+
+/* ---------- Email link — refined pill ---------- */
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--color-text-inverse);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.85rem 1.4rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer on hover */
+.email-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(0, 201, 167, 0.08) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.email-link:hover::before {
+  transform: translateX(100%);
+}
+
+.email-link:hover {
+  background: rgba(0, 201, 167, 0.08);
+  border-color: rgba(0, 201, 167, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 201, 167, 0.12);
+}
+
+.email-link svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-normal);
+}
+
+.email-link:hover svg {
+  transform: scale(1.1);
+}
+
+.footer-icon-image {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-normal), filter var(--transition-normal);
+}
+
+.email-link:hover .footer-icon-image {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* ============================================================
+   TRUSTED BY — distinct section with a step-up background
+   ============================================================ */
+
+.trusted-section {
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6rem 5rem 7rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative bottom-left corner mark */
+.trusted-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  border-top: 1px solid rgba(0, 201, 167, 0.1);
+  border-right: 1px solid rgba(0, 201, 167, 0.1);
+  pointer-events: none;
+}
+
+.trusted-section h2 {
+  font-size: clamp(0.75rem, 1vw, 0.85rem) !important;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0 0 4rem 0;
+  position: relative;
+  font-family: var(--font-heading, monospace);
+}
+
+/* Remove the teal bar from this heading */
+.trusted-section h2::after {
+  display: none;
+}
+
+/* ---------- Logo grid ---------- */
+.logos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.2rem 3rem;
+  position: relative;
+  transition: background 0.3s ease;
+  flex: 1;
+  min-width: 180px;
+}
+
+/* Separator lines between logos */
+.logo-item + .logo-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.logo-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.trust-logo {
+  max-width: 110px;
+  max-height: 55px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.trust-logo:hover {
+  opacity: 0.85;
+  transform: scale(1.06);
+}
+
+/* Email as image */
+.email-img {
+  max-height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .contact-columns-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-col {
+    padding: 5rem 3rem 4rem;
+  }
+
+  .contact-col::before {
+    left: 3rem;
+    right: 3rem;
+  }
+
+  .contact-col:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .contact-col:first-child::after {
+    display: none;
+  }
+
+  .trusted-section {
+    padding: 5rem 3rem 6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-col {
+    padding: 4rem 1.75rem 3.5rem;
+  }
+
+  .contact-col::before {
+    left: 1.75rem;
+    right: 1.75rem;
+  }
+
+  .contact-description {
+    max-width: 100%;
+  }
+
+  .logos-container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .logo-item {
+    width: 100%;
+    padding: 1.75rem 2rem;
+    min-width: unset;
+  }
+
+  .logo-item + .logo-item::before {
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+  }
+
+  .trusted-section {
+    padding: 4rem 1.75rem 5rem;
+  }
+}
+
+/* ============================================================
+   LEGACY / UNUSED FORM STYLES (kept for safety)
+   ============================================================ */
 
 .contact-form {
   max-width: 700px;
   margin: 0 auto;
-  background-color: var(--color-surface); /* Cambiar de var(--bg-white) */
+  background-color: var(--color-surface);
   padding: var(--space-2xl);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
@@ -38,9 +428,9 @@
 }
 
 .form-label {
-  font-family: var(--font-heading); /* Cambiar de 'Poppins' */
+  font-family: var(--font-heading);
   font-weight: 600;
-  color: var(--color-text-primary); /* Cambiar de var(--text-dark) */
+  color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -50,24 +440,24 @@
 
 .required-field::after {
   content: ' *';
-  color: var(--color-accent-500); /* Cambiar de var(--accent-cyan) */
+  color: var(--color-accent-500);
 }
 
 .form-input {
   width: 100%;
   padding: var(--space-sm) var(--space-md);
-  border: 2px solid var(--color-neutral-400); /* Cambiar sistema de bordes */
+  border: 2px solid var(--color-neutral-400);
   border-radius: var(--radius-md);
-  font-family: var(--font-primary); /* Cambiar de 'Inter' */
+  font-family: var(--font-primary);
   font-size: var(--font-size-base);
   color: var(--color-text-primary);
-  background-color: var(--color-surface-secondary); /* Cambiar de var(--bg-light-gray) */
+  background-color: var(--color-surface-secondary);
   transition: all var(--transition-fast);
   outline: none;
 }
 
 .form-input:focus {
-  border-color: var(--color-primary-500); /* Cambiar de var(--primary-blue) */
+  border-color: var(--color-primary-500);
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
   background-color: var(--color-surface);
 }
@@ -78,7 +468,7 @@ textarea.form-input {
 }
 
 .error-message {
-  color: #e53e3e; /* Color de error consistente */
+  color: #e53e3e;
   font-size: var(--font-size-sm);
   margin-top: var(--space-xs);
   display: block;
@@ -91,7 +481,7 @@ textarea.form-input {
 .submit-button {
   width: auto;
   margin: var(--space-lg) auto 0;
-  background-color: var(--color-primary-700); /* Cambiar de var(--primary-blue) */
+  background-color: var(--color-primary-700);
   color: var(--color-text-inverse);
   padding: var(--space-sm) var(--space-xl);
   border-radius: var(--radius-md);
@@ -103,228 +493,7 @@ textarea.form-input {
 }
 
 .submit-button:hover {
-  background-color: var(--color-primary-900); /* Cambiar de var(--primary-dark-blue) */
+  background-color: var(--color-primary-900);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-}
-
-.submit-button .send-icon {
-  width: 18px;
-  height: 18px;
-  fill: var(--color-text-inverse);
-  stroke: var(--color-text-inverse);
-  transition: transform var(--transition-normal);
-}
-
-.submit-button:hover .send-icon {
-  transform: translateX(5px);
-}
-
-/* Estilos para la sección de logos - ACTUALIZADOS */
-.trusted-section {
-  margin-top: var(--space-3xl);
-  text-align: center;
-}
-
-.trusted-section h2 {
-  margin-bottom: var(--space-xl);
-}
-
-.logos-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-2xl);
-  flex-wrap: wrap;
-  padding: var(--space-xl) 0;
-}
-
-.logo-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-normal);
-  min-width: 150px;
-  min-height: 100px;
-}
-
-.logo-item:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-
-.trust-logo {
-  max-width: 120px;
-  max-height: 80px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: brightness(1.1) contrast(1.1);
-  transition: all var(--transition-normal);
-}
-
-.trust-logo:hover {
-  filter: brightness(1.3) contrast(1.2);
-  transform: scale(1.05);
-}
-
-/* Responsividad - ACTUALIZADA */
-@media (max-width: 768px) {
-  .contact-section {
-    padding: var(--space-3xl) var(--space-md);
-  }
-  
-  .contact-form {
-    padding: var(--space-xl);
-  }
-  
-  .trusted-section {
-    margin-top: var(--space-2xl);
-  }
-  
-  .logos-container {
-    gap: var(--space-xl);
-  }
-  
-  .logo-item {
-    min-width: 120px;
-    min-height: 80px;
-    padding: var(--space-md);
-  }
-  
-  .trust-logo {
-    max-width: 100px;
-    max-height: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-form {
-    padding: var(--space-lg);
-    gap: var(--space-md);
-  }
-  
-  .form-label {
-    font-size: var(--font-size-xs);
-  }
-  
-  .form-input {
-    padding: var(--space-xs) var(--space-sm);
-    font-size: var(--font-size-sm);
-  }
-  
-  textarea.form-input {
-    min-height: 100px;
-  }
-  
-  .submit-button {
-    font-size: var(--font-size-sm);
-    padding: var(--space-xs) var(--space-lg);
-  }
-  
-  .logos-container {
-    flex-direction: column;
-    gap: var(--space-lg);
-  }
-  
-  .logo-item {
-    min-width: 100px;
-    min-height: 70px;
-    padding: var(--space-sm);
-  }
-  
-  .trust-logo {
-    max-width: 80px;
-    max-height: 50px;
-  }
-}
-
-/* NUEVOS ESTILOS PARA EL EMAIL - Agregar al final */
-.contact-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--space-2xl);
-  padding: var(--space-xl) 0;
-}
-
-.email-link {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  text-decoration: none;
-  color: var(--color-text-inverse);
-  font-family: var(--font-primary);
-  font-size: var(--font-size-lg);
-  transition: all var(--transition-normal);
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-md);
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.email-link:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.email-link svg {
-  flex-shrink: 0;
-  transition: transform var(--transition-normal);
-}
-
-.email-link:hover svg {
-  transform: scale(1.1);
-}
-
-.footer-icon-image {
-  height: 30px;
-  width: auto;
-  object-fit: contain;
-  transition: all var(--transition-normal);
-}
-
-.email-link:hover .footer-icon-image {
-  transform: scale(1.05);
-  filter: brightness(1.2);
-}
-
-/* Responsividad adicional para el email */
-@media (max-width: 768px) {
-  .contact-info {
-    margin-bottom: var(--space-xl);
-    padding: var(--space-lg) 0;
-  }
-  
-  .email-link {
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-    font-size: var(--font-size-base);
-  }
-  
-  .footer-icon-image {
-    height: 25px;
-  }
-}
-
-@media (max-width: 480px) {
-  .email-link {
-    gap: var(--space-xs);
-    padding: var(--space-xs) var(--space-sm);
-    font-size: var(--font-size-sm);
-  }
-  
-  .email-link svg {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .footer-icon-image {
-    height: 20px;
-  }
 }
