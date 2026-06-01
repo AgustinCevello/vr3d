@@ -242,6 +242,15 @@
   filter: brightness(1.2);
 }
 
+/* Email as image — FIX: flex-shrink + min-width para que no se corte en mobile */
+.email-img {
+  max-height: 32px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
 /* ============================================================
    TRUSTED BY — distinct section with a step-up background
    ============================================================ */
@@ -336,13 +345,6 @@
   transform: scale(1.06);
 }
 
-/* Email as image */
-.email-img {
-  max-height: 32px;
-  width: auto;
-  object-fit: contain;
-}
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -386,6 +388,19 @@
   }
 
   .contact-description {
+    max-width: 100%;
+  }
+
+  /* FIX: link ocupa todo el ancho y la imagen puede achicarse libremente */
+  .email-link {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0.85rem 1rem;
+  }
+
+  .email-img {
+    max-height: 26px;
     max-width: 100%;
   }
 
